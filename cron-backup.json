@@ -1,0 +1,31 @@
+{
+  "backupDate": "2026-03-03",
+  "description": "钉钉群「小龙虾」推送订阅配置",
+  "jobs": [
+    {
+      "name": "热点推送-早间",
+      "schedule": "每天 08:00 (Asia/Shanghai)",
+      "cron": "0 8 * * *",
+      "channel": "dingtalk",
+      "target": "ciduof91noqoglyt6+rs2cudq==",
+      "content": "国际时事、科技、财经热点搜索推送"
+    },
+    {
+      "name": "热点推送-午间",
+      "schedule": "每天 12:00 (Asia/Shanghai)",
+      "cron": "0 12 * * *",
+      "channel": "dingtalk",
+      "target": "ciduof91noqoglyt6+rs2cudq==",
+      "content": "国际时事、科技、财经热点搜索推送"
+    },
+    {
+      "name": "热点推送-晚间",
+      "schedule": "每天 18:00 (Asia/Shanghai)",
+      "cron": "0 18 * * *",
+      "channel": "dingtalk",
+      "target": "ciduof91noqoglyt6+rs2cudq==",
+      "content": "国际时事、科技、财经热点搜索推送"
+    }
+  ],
+  "notes": "美股分析任务因超时问题已移除，需重新配置更长超时时间"
+}
