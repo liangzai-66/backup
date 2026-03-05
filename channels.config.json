@@ -1,0 +1,34 @@
+{
+  "_comment": "OpenClaw Channels Configuration - Sanitized for GitHub",
+  "_warning": "Sensitive credentials have been replaced with placeholders. Do not commit real secrets to version control.",
+  "_exported_at": "2026-03-05T22:29:00+08:00",
+  "channels": {
+    "dingtalk": {
+      "enabled": true,
+      "clientId": "dingcjfltzs23no1saug",
+      "clientSecret": "${DINGTALK_CLIENT_SECRET}",
+      "robotCode": "dingcjfltzs23no1saug",
+      "corpId": "ding437f0c90bca81559bc961a6cb783455b",
+      "dmPolicy": "open",
+      "groupPolicy": "open",
+      "messageType": "markdown",
+      "debug": false,
+      "cardTemplateId": "7414dbd1-b255-4300-bd33-2749add7ecf6.schema",
+      "agentId": 4294269541,
+      "allowFrom": [],
+      "groups": {
+        "cidUOf91NOqOgLYT6+RS2cUdQ==": {
+          "name": "小龙虾群",
+          "openConversationId": "cidUOf91NOqOgLYT6+RS2cUdQ=="
+        }
+      },
+      "cardTemplateKey": "content"
+    }
+  },
+  "_env_setup": {
+    "description": "Set these environment variables or secrets before deploying",
+    "variables": {
+      "DINGTALK_CLIENT_SECRET": "Replace with your actual DingTalk client secret"
+    }
+  }
+}
