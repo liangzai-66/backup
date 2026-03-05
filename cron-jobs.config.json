@@ -1,0 +1,102 @@
+{
+  "_comment": "OpenClaw Cron Jobs Configuration - Sanitized for GitHub",
+  "_warning": "Runtime state has been removed. This file contains job definitions only.",
+  "_exported_at": "2026-03-05T23:26:00+08:00",
+  "version": 1,
+  "jobs": [
+    {
+      "id": "7355074c-894f-4c05-8cd2-c3db5c85be43",
+      "name": "热点推送 - 早间",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 8 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你需要为小龙虾群推送今日热点新闻。请按以下要求操作：\n\n1. 使用 searxng 搜索以下内容（各 1-2 条热门）：\n   - X 平台 (Twitter) 热门话题\n   - Facebook 热门内容\n   - 路透社 (Reuters) 最新新闻\n\n2. 筛选领域：国际时事、科技、财经\n\n3. 用中文整理成简洁的热点列表（每条带热度标记），格式如下：\n【热点推送】📰 早间版\n\n🔥 国际：\n- xxx\n\n💻 科技：\n- xxx\n\n💰 财经：\n- xxx\n\n4. 直接输出内容，我会发送到钉钉群。不要回复 HEARTBEAT_OK。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "dingtalk",
+        "to": "ciduof91noqoglyt6+rs2cudq=="
+      }
+    },
+    {
+      "id": "dcfc9e48-3706-420b-8b2b-af6713755efb",
+      "name": "热点推送 - 午间",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 12 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你需要为小龙虾群推送今日热点新闻。请按以下要求操作：\n\n1. 使用 searxng 搜索以下内容（各 1-2 条热门）：\n   - X 平台 (Twitter) 热门话题\n   - Facebook 热门内容\n   - 路透社 (Reuters) 最新新闻\n\n2. 筛选领域：国际时事、科技、财经\n\n3. 用中文整理成简洁的热点列表（每条带热度标记），格式如下：\n【热点推送】📰 午间版\n\n🔥 国际：\n- xxx\n\n💻 科技：\n- xxx\n\n💰 财经：\n- xxx\n\n4. 直接输出内容，我会发送到钉钉群。不要回复 HEARTBEAT_OK。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "dingtalk",
+        "to": "ciduof91noqoglyt6+rs2cudq=="
+      }
+    },
+    {
+      "id": "8ec50bdc-74f7-4047-9e2b-f590832979b8",
+      "name": "热点推送 - 晚间",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 18 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你需要为小龙虾群推送今日热点新闻。请按以下要求操作：\n\n1. 使用 searxng 搜索以下内容（各 1-2 条热门）：\n   - X 平台 (Twitter) 热门话题\n   - Facebook 热门内容\n   - 路透社 (Reuters) 最新新闻\n\n2. 筛选领域：国际时事、科技、财经\n\n3. 用中文整理成简洁的热点列表（每条带热度标记），格式如下：\n【热点推送】📰 晚间版\n\n🔥 国际：\n- xxx\n\n💻 科技：\n- xxx\n\n💰 财经：\n- xxx\n\n4. 直接输出内容，我会发送到钉钉群。不要回复 HEARTBEAT_OK。"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "dingtalk",
+        "to": "ciduof91noqoglyt6+rs2cudq=="
+      }
+    },
+    {
+      "id": "91c3a5cd-b543-4bad-bda6-3f1695382bc7",
+      "name": "美股分析推送",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 21 * * 1-5",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "你需要为小龙虾群推送美股分析。请按以下要求操作：\n\n1. 搜索以下股票的最新行情和分析（使用 searxng）：\n   - $GOOG (Alphabet)\n   - $HOOD (Robinhood)\n   - $RKLB (Rocket Lab)\n   - $TSLA (Tesla)\n   - $MP (MP Materials)\n   - $HIMS (Hims & Hers)\n   - $COIN (Coinbase)\n   - $CRCL (如有)\n\n2. 整理成简洁的格式（参考以下样式）：\n\n【美股分析推送】📈 2026 年 X 月 X 日\n\n**$股票** $价格区间 评级\n- 简短分析要点\n- 关键数据或事件\n\n3. 最后加上免责声明：\n⚠️ 免责声明：以上仅供参考，不构成投资建议。市场有风险，投资需谨慎。\n\n4. 用 emoji 点缀，保持简洁易读\n\n直接输出内容，不要回复 HEARTBEAT_OK。",
+        "timeoutSeconds": 120
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "dingtalk",
+        "to": "ciduof91noqoglyt6+rs2cudq==",
+        "bestEffort": true
+      }
+    }
+  ],
+  "_summary": {
+    "total_jobs": 4,
+    "enabled_jobs": 4,
+    "schedules": {
+      "daily": 3,
+      "weekdays_only": 1
+    }
+  }
+}
