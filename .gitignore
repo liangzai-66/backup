@@ -1,0 +1,35 @@
+# OpenClaw Backup - Git Ignore
+
+# 敏感信息（API keys, tokens 等）
+# openclaw.json 中的敏感字段应在提交前手动检查或使用环境变量
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+*.bak
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# Node modules (如果是技能依赖)
+node_modules/
+
+# 大型媒体文件
+*.mp4
+*.mp3
+*.wav
+media/
+
+# 数据库文件（如果有）
+*.db
+*.sqlite
+
+# 环境变量文件（包含敏感信息）
+.env
+.env.local
