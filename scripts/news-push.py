@@ -24,44 +24,55 @@ TOPIC_LIMITS = {
 
 # 搜索领域和关键词
 # 数据源：X 平台 (Twitter) + Facebook + 路透社 (Reuters) + 微博热搜
-# 说明：腾讯微博已于 2020 年停止服务，无法获取
+# 全部使用中文关键词，确保返回中文内容
 TOPICS = {
     "国际时事": [
-        "site:reuters.com 国际新闻 中文",
-        "X Twitter 国际时事 热点",
-        "Facebook 全球新闻",
-        "国际局势 最新消息"
+        "国际时事 热点 今天",
+        "国际新闻 最新消息",
+        "环球时报 今天",
+        "参考消息 国际",
+        "新浪国际 今天",
+        "网易国际 新闻",
+        "腾讯国际 时事",
+        "路透社 中文网 今天"
     ],
     "科技前沿": [
-        "site:reuters.com 科技",
-        "X Twitter AI 人工智能",
-        "Facebook 科技创新",
-        "科技新闻 突破"
+        "科技前沿 今天",
+        "AI 人工智能 最新",
+        "新浪科技 今天",
+        "36 氪 科技",
+        "量子计算 突破",
+        "芯片 半导体 新闻"
     ],
     "财经动态": [
-        "site:reuters.com 财经 股票",
-        "X Twitter 股市 金融",
-        "Facebook 经济数据",
-        "财经新闻 市场"
+        "财经新闻 今天",
+        "股票 股市 最新",
+        "新浪财经 今天",
+        "东方财富 财经",
+        "A 股 港股 美股",
+        "经济数据 发布"
     ],
     "娱乐八卦": [
-        "微博热搜 娱乐 top5",
-        "X Twitter 明星 娱乐",
-        "Facebook celebrity",
-        "娱乐八卦 热点"
+        "娱乐八卦 今天",
+        "明星 热搜",
+        "新浪娱乐 今天",
+        "腾讯娱乐 明星",
+        "微博热搜 娱乐",
+        "娱乐圈 爆料"
     ]
 }
 
 def search_news(query, num_results=10):
-    """使用 searxng 搜索新闻（仅当天内容）"""
+    """使用 searxng 搜索新闻（仅当天内容，仅中文）"""
     try:
         cmd = [
-            "uv", "run",
+            "/home/admin/.local/bin/uv", "run",
             "/home/admin/.openclaw/workspace/skills/searxng/scripts/searxng.py",
             "search", query,
             "-n", str(num_results),
             "--format", "json",
-            "--time-range", "day"  # 只搜索当天内容
+            "--time-range", "day",    # 只搜索当天内容
+            "--language", "zh"        # 只返回中文内容
         ]
         env = os.environ.copy()
         env["SEARXNG_URL"] = SEARXNG_URL
@@ -69,7 +80,16 @@ def search_news(query, num_results=10):
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=30, env=env)
         if result.returncode == 0:
             data = json.loads(result.stdout)
-            return data.get("results", [])
+            results = data.get("results", [])
+            # 二次过滤：确保内容包含中文
+            zh_results = []
+            for item in results:
+                title = item.get("title", "")
+                content = item.get("content", "")
+                # 检查是否包含中文字符
+                if any('\u4e00' <= c <= '\u9fff' for c in title) or any('\u4e00' <= c <= '\u9fff' for c in content):
+                    zh_results.append(item)
+            return zh_results
         else:
             print(f"搜索失败：{result.stderr}", file=sys.stderr)
             return []
