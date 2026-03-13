@@ -28,6 +28,10 @@
     "us-stock-analysis": {
       "version": "0.1.1",
       "installedAt": 1773136561711
+    },
+    "news-aggregator": {
+      "version": "1.0.3",
+      "installedAt": 1773372612209
     }
   }
 }
