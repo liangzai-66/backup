@@ -13,6 +13,10 @@ import xml.etree.ElementTree as ET
 import time
 from datetime import datetime
 
+# 确保日志目录存在（cron环境下尤为重要）
+LOG_DIR = "/home/admin/.openclaw/workspace/logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+
 # 配置
 DINGTALK_CHANNEL_ID = "cid5P1UzrvK7Xx2yiCGZVit+Q=="
 

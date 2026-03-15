@@ -9,6 +9,10 @@ import subprocess
 import json
 from datetime import datetime
 
+# 确保日志目录存在（cron环境下尤为重要）
+LOG_DIR = "/home/admin/.openclaw/workspace/logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+
 # 配置 - 余杭区五常街道的经纬度
 LOCATION = "杭州市余杭区五常街道"
 LATITUDE = 30.25
